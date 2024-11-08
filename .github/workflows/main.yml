@@ -22,3 +22,6 @@ jobs:
       - name: Run test suite
         run: |
           pipenv run pytest
+      - name: install pipenv2
+        run: |
+          pipenv lock
