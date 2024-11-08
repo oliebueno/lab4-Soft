@@ -33,15 +33,16 @@ jobs:
       - name: Run black formatter
         uses: rickstaa/action-black@v1.3.3
 
-      name: format
-      on: [push, pull_request]
-      jobs:
-        linter_name:
-          name: runner / black formatter
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v4
-            - uses: rickstaa/action-black@v1
-              with:
-                black_args: ". --check"
-                  
+      - name: black-action
+        on: [push, pull_request]
+
+jobs:
+  linter_name:
+    name: runner / black formatter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rickstaa/action-black@v1
+        with:
+          black_args: ". --check"
+            
